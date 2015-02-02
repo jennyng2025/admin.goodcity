@@ -73,6 +73,33 @@ test("offer-messages from staff should add unread bubble in supervisor message t
   });
 });
 
+test("mark as read if user on the same thread", function() {
+  visit('/offers/' + offer.id + "/donor_messages");
+  andThen(function() {
+    var message5 = FactoryGuy.make("message", {id: 5, offer: offer, item: null, body: "Current thread message", isPrivate: false});
+    var subscriptions = lookup('controller:subscriptions');
+    var currentDate = new Date();
+    Ember.run(function() {
+      subscriptions.notification({
+        date: currentDate,
+        entity: {
+          body: "Current thread message",
+          created_at: currentDate,
+          id: 5,
+          is_private: false,
+          offer_id: offer.get('id'),
+          sender_id: 6
+        },
+        text: "Current thread message",
+        entity_type: "message"
+      });
+    });
+
+    equal($(".received_message#5").text().indexOf("Current thread message") > -1, true);
+  });
+});
+
+
 test("offer-message with image", function() {
   visit('/offers/' + offer1.id + "/donor_messages");
   andThen(function() {

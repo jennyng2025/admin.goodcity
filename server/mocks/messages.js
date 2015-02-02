@@ -6,7 +6,8 @@ module.exports = function(app) {
     "messages": [
       {"id":1,"body":"example1", "state": "read"},
       {"id":2,"body":"example2", "state": "read"},
-      {"id":3,"body":"example3", "state": "read"}
+      {"id":3,"body":"example3", "state": "read"},
+      {"id":5,"body":"Current thread message", "state": "read"}
     ]
   };
 
