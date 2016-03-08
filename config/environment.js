@@ -70,7 +70,7 @@ module.exports = function(environment) {
     // RESTAdapter Settings
     ENV.APP.API_HOST_URL = 'http://localhost:3000';
     ENV.APP.SOCKETIO_WEBSERVICE_URL = 'http://localhost:1337/goodcity';
-    ENV.DONOR_APP_HOST_URL = 'http://localhost:4200';
+    ENV.ADMIN_APP_HOST_URL = 'http://localhost:4201';
 
     ENV.APP.GOODCITY_NUMBER = "+85258087803"
 
