@@ -25,7 +25,7 @@ FactoryGuy.define('offer', {
     updatedAt: new Date(2015, 0, 20, 13,11)
   },
   offer_with_items: {
-    items: function(){ return FactoryGuy.buildList('item', 2); }
+    items: FactoryGuy.hasMany('item', 2)
   }
 });
 

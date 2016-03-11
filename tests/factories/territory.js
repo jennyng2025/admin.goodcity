@@ -12,9 +12,7 @@ FactoryGuy.define('territory',{
     name: FactoryGuy.generate("territory_name")
   },
   territory_with_many_districts: {
-    districts: function(){
-      return FactoryGuy.buildList('district',6);
-    }
+    districts: FactoryGuy.hasMany('district', 6)
   }
 });
 

@@ -21,7 +21,7 @@ module('Subscriptions', {
 test("updateStore doesn't process before response to model.save request", function() {
   expect(2);
 
-  var store = lookup('store:main');
+  var store = FactoryGuy.store;
   var subscriptions = lookup('controller:subscriptions');
   var user = FactoryGuy.make('user');
   FactoryGuy.make('user_profile', {id:user.id});
@@ -41,8 +41,8 @@ test("updateStore doesn't process before response to model.save request", functi
 
   Ember.run(function() {
     store.createRecord("offer",{createdBy:user}).save().then(function() {
-      equal(store.all("offer").get("length"), 1);
-      equal(store.all("offer").get("firstObject.id"), offer.id);
+      equal(store.peekAll("offer").get("length"), 1);
+      equal(store.peekAll("offer").get("firstObject.id"), offer.id);
     });
   });
 

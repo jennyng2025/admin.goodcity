@@ -16,7 +16,7 @@ test('Item is a valid ember-data Model', function () {
 
   Ember.run(function() {
     store.createRecord('item', {id: 1, state: 'draft', donorDescription: 'test-item'});
-    record = store.getById('item', 1);
+    record = store.peekRecord('item', 1);
   });
 
   equal(record.get('donorDescription'), 'test-item');

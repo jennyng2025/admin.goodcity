@@ -99,7 +99,7 @@ export default Ember.Controller.extend({
         rejectProperties.offer = offer;
         rejectProperties.packageType = this.store.peekRecord('packageType', this.get('itemTypeId'));
 
-        var item = this.store.push('item', rejectProperties);
+        var item = this.store.push({item: rejectProperties});
 
         // Save changes to Item
         item.save()

@@ -19,7 +19,7 @@ test('offer is a valid ember-data Model', function () {
 
   Ember.run(function() {
     store.createRecord('offer', {id: 1, collectionContactName: 'Test'});
-    record = store.getById('offer', 1);
+    record = store.peekRecord('offer', 1);
   });
 
   equal(record.get('collectionContactName'), 'Test');

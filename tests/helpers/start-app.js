@@ -42,7 +42,7 @@ export default function startApp(attrs, permissionId) {
   lookup("service:logger").error = message => QUnit.assert.equal(message, "");
 
   //needed by application controller init
-  lookup("controller:subscriptions")._actions.wire = function() {};
+  lookup("controller:subscriptions").actions.wire = function() {};
 
   return application;
 }
