@@ -7,7 +7,7 @@ const Router = GoodcityRouter.extend(googlePageview, {
 });
 
 Router.map(function() {
-  this.resource('offer', { path: '/offers/:offer_id'}, function() {
+  this.route('offer', { path: '/offers/:offer_id'}, function() {
     this.route('messages');
     this.route('donor_messages');
     this.route('supervisor_messages');
@@ -18,20 +18,20 @@ Router.map(function() {
     this.route('gogovan_charges');
     this.route('cancel_gogovan');
 
-    this.resource('item', {path: '/items/:item_id'}, function() {
+    this.route('item', { resetNamespace: true, path: '/items/:item_id' }, function() {
       this.route('edit_images');
     });
 
-    this.resource('review_offer', function(){
+    this.route('review_offer', { resetNamespace: true }, function(){
       this.route('items');
       this.route('logistics');
       this.route('donor_details');
       this.route('receive');
     });
 
-    this.resource('receive_package', {path: '/receive_package/:package_id'});
+    this.route('receive_package', {path: '/receive_package/:package_id'});
 
-    this.resource('review_item', {path: '/review_item/:item_id'},function() {
+    this.route('review_item', { resetNamespace: true, path: '/review_item/:item_id' },function() {
       this.route('index', { path: '/'});
       this.route('reject');
       this.route('accept');
@@ -39,11 +39,11 @@ Router.map(function() {
       this.route('supervisor_messages');
     });
 
-    this.resource('package', {path:'/package/:package_id'}, function() {
+    this.route('package', { resetNamespace: true, path:'/package/:package_id' }, function() {
       this.route('edit_images');
     });
 
-    this.resource('delivery', { path: '/delivery/:delivery_id'}, function(){
+    this.route('delivery', { resetNamespace: true, path: '/delivery/:delivery_id' }, function(){
       this.route('book_timeslot');
       this.route('available_time_slots');
       this.route('contact_details');
@@ -59,42 +59,42 @@ Router.map(function() {
     });
   });
 
-  this.resource('item_types');
+  this.route('item_types');
   this.route('packages');
   this.route('my_notifications');
   this.route('search');
 
-  this.resource('offers', function(){
+  this.route('offers', function(){
     this.route('submitted');
     this.route('receiving');
 
-    this.resource('my_list', function(){
+    this.route('my_list', { resetNamespace: true }, function(){
       this.route('reviewing');
       this.route('reviewed');
       this.route('scheduled');
       this.route('finished');
     });
 
-    this.resource('in_progress', function(){
+    this.route('in_progress', { resetNamespace: true }, function(){
       this.route('reviewing');
       this.route('reviewed');
     });
 
-    this.resource('finished', function(){
+    this.route('finished', { resetNamespace: true }, function(){
       this.route('received');
       this.route('cancelled');
       this.route('inactive');
     });
 
-    this.resource('scheduled', function(){
+    this.route('scheduled', { resetNamespace: true }, function(){
       this.route('collection');
       this.route('gogovan');
       this.route('other_delivery');
     });
   });
 
-  this.resource('users');
-  this.resource('user', { path: '/users/:user_id'});
+  this.route('users');
+  this.route('user', { path: '/users/:user_id'});
 });
 
 export default Router;
